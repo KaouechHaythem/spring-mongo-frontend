@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   public deleteEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService){}
-
+  mode : string ="";
   ngOnInit() {
     this.getEmployees();
   }
@@ -41,6 +41,8 @@ export class AppComponent implements OnInit {
           console.log(response);
           this.getEmployees();
           addForm.reset();
+          this.mode='';
+
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
@@ -55,6 +57,8 @@ export class AppComponent implements OnInit {
       (response: Employee) => {
         console.log(response);
         this.getEmployees();
+        this.mode='';
+
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -68,6 +72,7 @@ export class AppComponent implements OnInit {
       (response: void) => {
         console.log(response);
         this.getEmployees();
+        this.mode='';
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -100,13 +105,16 @@ export class AppComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
+      this.mode='add';
       button.setAttribute('data-target', '#addEmployeeModal');
     }
     if (mode === 'edit'&& employee)  {
       this.editEmployee = employee;
       button.setAttribute('data-target', '#updateEmployeeModal');
+      this.mode='edit';
     }
     if (mode === 'delete' && employee) {
+      this.mode='delete';
       this.deleteEmployee = employee;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
