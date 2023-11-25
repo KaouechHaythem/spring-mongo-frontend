@@ -5,7 +5,7 @@ import { Employee } from './employee';
 
 @Injectable({providedIn: 'root'})
 export class EmployeeService {
-  private apiServerUrl = "http://api.spring-boot-service.com:8080";
+  private apiServerUrl = "spring-boot-service:8080";
 
   constructor(private http: HttpClient){}
 
@@ -21,7 +21,7 @@ export class EmployeeService {
     return this.http.put<Employee>(`${this.apiServerUrl}/employee/update`, employee);
   }
 
-  public deleteEmployee(employeeId: number): Observable<void> {
+  public deleteEmployee(employeeId: string): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/employee/delete/${employeeId}`);
   }
 }
