@@ -5,7 +5,7 @@ import { Employee } from './employee';
 
 @Injectable({providedIn: 'root'})
 export class EmployeeService {
-  private apiServerUrl = "http://api.spring-boot-service:8080";
+  private apiServerUrl = "http://4.157.99.15:8080";
 
   constructor(private http: HttpClient){}
 
