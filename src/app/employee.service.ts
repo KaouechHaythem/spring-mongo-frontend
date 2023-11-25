@@ -5,7 +5,7 @@ import { Employee } from './employee';
 
 @Injectable({providedIn: 'root'})
 export class EmployeeService {
-  private apiServerUrl = "http://backend.spring-mongo:8080";
+  private apiServerUrl = "http://backend.spring-mongo.com:8080";
 
   constructor(private http: HttpClient){}
 
